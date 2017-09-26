@@ -1,1 +1,3 @@
-# tree
+this repository contains two main directories , one for AVL tree and the other for binary search tree. These two directories contains three sub directories named src, include, makefile. src folder contains all the source code files including header file . makefile directory contains makefile which is used generate final executable from all the .c files. include directory contains header files .
+# execution sequence
+download this repository and place all the source code and makefile  at one place or directory. Now run the makefile by using the command make. you can observe final executable with name avl for avl related files and bst for binary search tree related files.
