@@ -1,19 +1,19 @@
 #include"header2.h"
 #include"header1.h"
 
-
-char *findmin(char **p) ;
-void find_adj_nodes(char *q) ;
+/* fucntion prototype declarations */
+char *findmin(char **p) ; /* function for finding the minimum distance node from the queue */
+void find_adj_nodes(char *q) ; /* function for finding the adjacent nodes or vertices of a given node in a graph */
 
 int sum ;
-
+/* following function is the implementation dijkstras shortest path algorithm */
 void dijkstras(char *start) 
 {
 	static int count ;
 	int i;
 	count = sum = 0 ;
 	memset(adj, 0, sizeof(adj)) ;
-
+/* intialize distance to every node to a large value say INFINITY (macro defined in header)*/
 	for(i=0 ; i<vertices ;i++) 
 	{
 		vertex_attr[i].key = INFINITY ;
@@ -26,27 +26,27 @@ void dijkstras(char *start)
 
 	int index = hash(start) ;
 
-	vertex_attr[index].key = 0 ;
+	vertex_attr[index].key = 0 ;     /* setting the distance to source node to zero */
 	vertex_attr[index].parent =  NULL ;
-
+/* enque all the vertices into queue */
 	for(i=0 ; i<vertices ; i++)
 	{
 		if(arr[i] == NULL)
 			continue ;
 		Enqueue(arr[i]->node) ;
 	}
-
+/* loop here till queue is empty */
 	while(!(IsEmpty())) 
 	{
 		
 		int j=0 ;
-		char *min_node = findmin(A) ;
+		char *min_node = findmin(A) ; /*find node with minimum distance value from the source node */
 		if(min_node == NULL)  // traversal complete i.e all elements are dequeued 
 			return ;
 		int index = hash(min_node) ;
 			
 		
-		if(vertex_attr[index].parent != NULL) 
+		if(vertex_attr[index].parent != NULL)  /* add to the distance map and parent map */
 		{
 			
 			 pmap[count].vertex = min_node ;
@@ -64,10 +64,10 @@ void dijkstras(char *start)
 			dmap[count].distance = 0 ;
 			count++ ;
 		}
-		deque(min_node) ;
-        	find_adj_nodes(min_node) ;
+		deque(min_node) ;  /* removing the current minimum node from the queue as it is distance is already determined and stored*/
+        	find_adj_nodes(min_node) ; /* find the adjacent nodes to current minimum node to traverse further */
 
-		while(adj[j].data != NULL)
+		while(adj[j].data != NULL) /* updating the distance of the nodes from the source node */
 		{
 			
 			index = hash(adj[j].data) ;
@@ -84,7 +84,7 @@ void dijkstras(char *start)
 	}
 }
 
-/*struct adjacent* as return type earlier*/
+
 
 void find_adj_nodes(char *ptr)
 {
