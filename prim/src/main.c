@@ -8,7 +8,7 @@
 
 int main()
 {
-	front= rear = -1 ;
+	front= rear = -1 ; /* varaibles for pointing to front end and bottom end of circular queue */
 	int choice , weight ,l;
 	
 	char node1[MAX_NODE_NAME], node2[MAX_NODE_NAME];
@@ -68,14 +68,6 @@ int main()
 }
 
 
-/*
-struct vertex* create_graph(int num)
-{
-	struct vertex *temp=(struct vertex *)malloc(sizeof(struct vertex)*num);
-	memset(temp, 0, sizeof(temp)) ;
-	return temp;
-}
 
-*/
 
 
